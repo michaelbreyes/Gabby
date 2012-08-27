@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="@Url.Content("~/Content/Scripts/ember/ember-0.9.8.1.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/Scripts/libs/jquery.signalR.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/Scripts/Administration.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/Scripts/room/App.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/Scripts/room/Controllers.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/Scripts/room/Models.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/Scripts/libs/jplayer/jquery.jplayer.min.js")" type="text/javascript"></script>
+
+<h2>Manage Rooms</h2>
+
+@section featured {
+    <section class="featured" style="height:100%;">
+        <div class="content-wrapper" style="height:90%;">
+		    <div id="program-title" class="gabby-logo">
+                <img src="../../Content/Images/genecaG.png" height="47px" width="47px" style="vertical-align:bottom;" />
+                <span>gabby</span>
+            </div>
+		    <br/><br/>
+            Logged in as 
+        </div>
+        <div class="content-wrapper" style="height:10%;">
+            <a style="color:#c3e9f5;" href="@Url.Content("~/Administration/Index")">Administration</a>
+        </div>
+    </section>
+}
+
+
+<div>
+        
+    <script type="text/x-handlebars">
+        <table>
+            {{#each App.RoomController}}
+            <tr>
+            <td>{{Name}}</td><td><a href="" class="deleteLink" {{bindAttr data-roomname="Name"}}>delete</a></td>
+            </tr>
+			{{/each}}
+        
+		</table>
+    </script>
+</div>
+
+	<script type="text/javascript">
+	    $(function () {
+	        AdministrationHelper.GetRooms();
+	        AdministrationHelper.BindEvents();
+	    });
+	</script>

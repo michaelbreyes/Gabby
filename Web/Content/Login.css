@@ -1,0 +1,59 @@
+﻿/* Elements */
+body {
+    background-color: #2d2d2d;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Droid Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+	text-align: center;
+}
+
+/* Classes */
+.button {
+	width: 200px;
+	height: 50px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-khtml-border-radius: 2px;
+	margin-top: 10px;
+}
+
+
+/* ID-Specific */
+#header {
+	margin: 25px;
+	font-size: 50px;
+}
+#login-box {
+	border: 1px solid #fff;
+	background-color: #7a7a7a;
+	display: inline-block;
+	padding: 25px;
+}
+#login {
+	text-align: left;
+	font-size: 14px;
+}
+#login strong {
+	font-size: 18px;
+}
+#login #txtEmail {
+	width: 370px;
+	font-size: 16px;
+	padding: 5px;
+	margin-top: 15px;
+}
+#login #chkRememberUserName {
+	vertical-align: middle;
+}
+
+#button {
+	text-align: center;
+}
+
+#login input[type=submit] {
+	font-size: 18px;
+	padding: 5px;
+	width: 150px;
+}

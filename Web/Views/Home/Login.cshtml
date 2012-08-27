@@ -1,0 +1,34 @@
+﻿@{
+	Layout = "";
+}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="@Url.Content("~/Content/Login.css")" rel="stylesheet" type="text/css" />
+		<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400,400italic|Inconsolata' rel='stylesheet'>
+	</head>
+	<body>
+		<div id="header">Welcome to gabby</div>
+		<br/><br/>
+		@using (Html.BeginForm())
+		{
+			<div id="login-box">
+				<div id="login">
+					<strong>Email address</strong> &nbsp;&nbsp;&nbsp;(for Gravatar image)<br/>
+					<input id="txtEmail" name="Email" placeholder="youremail@domain.com" value="@ViewBag.LastUserName"/>
+					<br /><br/>
+                    <label for="chkRememberEmail" >Remember My Email Address:</label>
+                    <input id="chkRememberEmail" type="checkbox" name="RememberEmail" checked="checked" />
+                    <br /><br />         
+					<div id="button">
+						<input type="submit" value="Start Gabbing" />
+					</div>
+				</div>
+			</div>
+		}
+		<br />
+		<b id ="header">@ViewBag.Error</b>
+		
+	</body>
+</html>

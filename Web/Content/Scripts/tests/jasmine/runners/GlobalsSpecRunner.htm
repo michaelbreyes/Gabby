@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Globals Spec Runner</title>
+
+    <link rel="stylesheet" type="text/css" href="../jasmine.css" />
+    <script type="text/javascript" src="../jasmine.js"></script>
+    <script type="text/javascript" src="../jasmine-html.js"></script>
+    <script type="text/javascript" src="../../libs/jquery-1.7.2.min.js"></script>
+    <script src="/Content/scripts/libs/underscore.js" type="text/javascript"></script>
+
+    <!-- include source files here... -->
+    <script type="text/javascript" src="/Content/scripts/Globals.js"></script>
+    <script type="text/javascript" src="/Content/scripts/Search.js"></script>
+
+    <!-- include spec files here... -->
+    <script type="text/javascript" src="../spec/GlobalsSpec.js"></script>
+
+    <!-- don't modify this code... -->
+    <script type="text/javascript">
+        (function() {
+            var jasmineEnv = jasmine.getEnv();
+            jasmineEnv.updateInterval = 1000;
+
+            var htmlReporter = new jasmine.HtmlReporter();
+
+            jasmineEnv.addReporter(htmlReporter);
+
+            jasmineEnv.specFilter = function(spec) {
+                return htmlReporter.specFilter(spec);
+            };
+
+            var currentWindowOnload = window.onload;
+
+            window.onload = function() {
+                if (currentWindowOnload) {
+                    currentWindowOnload();
+                }
+                execJasmine();
+            };
+
+            function execJasmine() {
+                jasmineEnv.execute();
+            }
+
+        })();
+  </script>
+</head>
+<body>
+    <div>
+
+        <!--Restaurant Search Fields-->
+        <div style="float:left; width:270px; height:50px; visibility:hidden;">
+            <input name="Restaurant" id="Restaurant" class="restaurantInput" style="text-align:center; height:24px;" />
+        </div>            
+        <div style="float:right; width:270px; height:50px; visibility:hidden;">
+            <input name="Location" id="Location" autocomplete="off" style=" text-align: center; height: 24px;" />
+        </div > 
+    </div>
+</body>
+</html>

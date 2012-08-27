@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Administration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Administration</h2>
+<h4>Please use the administrator password to make changes to rooms</h4>
+
+@section featured {
+    <section class="featured" style="height:100%;">
+        <div class="content-wrapper" style="height:90%;">
+		    <div id="program-title" class="gabby-logo">
+                <img src="../../Content/Images/genecaG.png" height="47px" width="47px" style="vertical-align:bottom;" />
+                <span>gabby</span>
+            </div>
+		    <br/><br/>
+            Logged in as 
+        </div>
+        <div class="content-wrapper" style="height:10%;">
+            <a style="color:#c3e9f5;" href="@Url.Content("~/Administration/Index")">Administration</a>
+        </div>
+    </section>
+}
+
+<div id="AdminForm">
+    @using (Html.BeginForm("Index", "Administration"))
+    {
+        <span>Admininstrator Password:</span>
+        <span >
+            <input type="password" id="AdminPassword" name="AdminPassword" /> 
+        </span>
+        <input type="submit" id="AdminPasswordSubmit" name="AdminPasswordSubmit" value="Enter" /> @ViewBag.InvalidResponse
+    }
+</div>
+
+
+
+<script src="@Url.Content("~/Content/Scripts/Administration.js")" type="text/javascript"></script>
+	<script type="text/javascript">
+	    $(function () {
+	        AdministrationHelper.BindEvents();
+	    });
+	</script>

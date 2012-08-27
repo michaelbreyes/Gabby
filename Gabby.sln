@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{0DB3367D-B74A-4A8C-81CF-29CF355B01B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{26F60108-B38C-4663-B7F3-AE0F0220B777}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{FE53EA0D-4CFC-4CFE-A4CB-53E312864A68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{DFEBFD09-A014-40F2-A423-68BEBAF07CDA}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.geneca.com:8088/tfs/tfs2010collection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Core\\Core.csproj
+		SccProjectName1 = Core
+		SccLocalPath1 = Core
+		SccProjectUniqueName2 = Domain\\Domain.csproj
+		SccProjectName2 = Domain
+		SccLocalPath2 = Domain
+		SccProjectUniqueName3 = Data\\Data.csproj
+		SccProjectName3 = Data
+		SccLocalPath3 = Data
+		SccProjectUniqueName4 = Web\\Web.csproj
+		SccProjectName4 = Web
+		SccLocalPath4 = Web
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DB3367D-B74A-4A8C-81CF-29CF355B01B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DB3367D-B74A-4A8C-81CF-29CF355B01B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DB3367D-B74A-4A8C-81CF-29CF355B01B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DB3367D-B74A-4A8C-81CF-29CF355B01B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26F60108-B38C-4663-B7F3-AE0F0220B777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26F60108-B38C-4663-B7F3-AE0F0220B777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26F60108-B38C-4663-B7F3-AE0F0220B777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26F60108-B38C-4663-B7F3-AE0F0220B777}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE53EA0D-4CFC-4CFE-A4CB-53E312864A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE53EA0D-4CFC-4CFE-A4CB-53E312864A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE53EA0D-4CFC-4CFE-A4CB-53E312864A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE53EA0D-4CFC-4CFE-A4CB-53E312864A68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFEBFD09-A014-40F2-A423-68BEBAF07CDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFEBFD09-A014-40F2-A423-68BEBAF07CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFEBFD09-A014-40F2-A423-68BEBAF07CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFEBFD09-A014-40F2-A423-68BEBAF07CDA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

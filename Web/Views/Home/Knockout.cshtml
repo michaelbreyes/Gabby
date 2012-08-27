@@ -1,0 +1,164 @@
+@{
+	ViewBag.Title = "Chat";
+}
+
+@section script {
+	<script type="text/javascript">
+	    window.currentUserId = '@ViewBag.UserId';
+	    window.htmlEnabled = '@ViewBag.htmlEnabled';
+	</script>
+    <script src="@Url.Content("~/Content/Scripts/libs/jplayer/jquery.jplayer.min.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Content/Scripts/libs/jquery.signalR.min.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Content/Scripts/knockout/knockout-2.0.0.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Content/Scripts/helpers.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Content/Scripts/mediator.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Content/Scripts/knockout/app.js")" type="text/javascript"></script>
+	<script src="/signalr/hubs" type="text/javascript"></script>
+}
+
+@section rightside {
+	<div id="actions-header" class="header-bar clickable">
+		Actions
+	</div>
+	<div id="actions-div" class="expandable">
+		<button id="create-room-button">Create Room</button>
+		<button id="blackboard-button">Blackboard</button>
+		<button id="admin-button" data-link="@Url.Content("~/Administration/Index")">Admin</button>
+		<button id="logout-button">Logout</button>
+	</div>
+	<div id="blackboard-div">
+		<div id="blackboard-toolbar">
+			<div><a id="canvas-clear" href="#">Erase</a> &nbsp;&nbsp;</div>
+			<div><a id="canvas-blank" href="#">Blank</a> &nbsp;&nbsp;</div>
+			<div class="canvas-color white selected" data-color="fff"></div>
+			<div class="canvas-color blue" data-color="0cacef"></div>
+			<div class="canvas-color red" data-color="f00"></div>
+			<div class="canvas-color yellow" data-color="gold"></div>
+			<div class="canvas-color green" data-color="00ff1b"></div>
+			<div class="canvas-color black" data-color="333"></div>
+			<div class="right">
+				&nbsp;&nbsp;&nbsp;
+				<select id="canvas-thickness">
+					<option value="1">Small</option>
+					<option value="3" selected="selected">Medium</option>
+					<option value="10">Thick</option>
+					<option value="20">X-Thick</option>
+				</select>
+			</div>
+		</div>
+		<div id="canvas-container">
+			<canvas id="blackboard-canvas" class="blackboard" width="389" height="530"></canvas>
+		</div>
+	</div>
+	<div id="watch-rooms-header" class="header-bar clickable">
+		Rooms You're Watching
+	</div>
+	<div id="watch-rooms-div" class="expandable" data-bind="foreach: rooms">
+		<div class="room-row" data-bind="if: isWatched">
+			<div data-bind="css: { 'user-list-closed': isCollapsed, 'selected-room': isInRoom, 'room-name-entry': true }">
+				<div class="clickable expand-users">
+					<div class="icon-minus-circle"></div>
+					<div class="icon-minus-line"></div>
+					<div data-bind="css: { 'user-list-closed': isCollapsed, plus: true }"></div>
+				</div>
+				<span class="room-link" data-bind="text: Name"></span>
+				<!-- ko ifnot: isInRoom -->
+				    <div data-bind="attr: { 'data-roomname': Name }" class="eye eye-closed watch-room"></div>
+				<!-- /ko -->
+				<div data-bind="css: { 'message-animate': countChanged, 'notification-msg': true, 'message-symbol': true }, text: count"></div>
+				<!-- ko if: isPrivate -->
+				    <div class="lock"><div class="lock-open"></div></div>
+				<!-- /ko -->
+			</div>
+			<div data-bind="css: { hidden: isCollapsed, expandable: true, users: true }">
+				<div class="user-name" data-bind="foreach: users">
+					<span data-bind="text: $data"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="rooms-header" class="header-bar clickable">
+		Rooms Available
+	</div>
+	<div id="rooms-div" class="expandable" data-bind="foreach: rooms">
+		<div class="room-row">
+			<!-- ko ifnot: isWatched -->
+			    <div data-bind="css: { 'user-list-closed': isCollapsed, 'room-name-entry': true }">
+				    <div class="clickable expand-users">
+					    <div class="icon-minus-circle"></div>
+					    <div class="icon-minus-line"></div>
+					    <div data-bind="css: { 'user-list-closed': isCollapsed, plus: true }"></div>
+				    </div>
+				    <span class="inline room-link" data-bind="text: Name"></span>
+				    <div data-bind="attr: { 'data-roomname': Name }" class="eye eye-opened watch-room"></div>
+				    <!-- ko if: isPrivate -->
+				        <div class="lock"><div class="lock-closed"></div></div>
+					    <input class="display-none password-input" placeholder="Enter to submit" type="password"></input>
+				    <!-- /ko -->
+			    </div>
+			    <div data-bind="css: { hidden: isCollapsed, expandable: true, users: true }">
+				    <div class="user-name" data-bind="foreach: users">
+					    <span data-bind="text: $data"></span>
+				    </div>
+			    </div>
+			<!-- /ko -->
+		</div>
+	</div>
+}
+
+<div class="header-bar">
+    <div class="right" data-bind="text: currentUserId">
+    </div>
+	<div id="app-name">
+		<img src="@Url.Content("~/Content/Images/genecaG.png")" />
+        <span>gabby</span>
+	</div>
+</div>
+<div id="new-message-div">
+	<div class="top">
+		<img id="current-avatar" data-bind="attr: { src: avatarUrl }"/>
+	</div>
+	<div class="top"><textarea id="new-message" placeholder="Enter your message here. ENTER to send"></textarea></div>
+	<div class="top"><input type="button" id="send-message" value="Send" /></div>
+	<br/>
+
+	<div id="messages" data-bind="foreach: messages">
+		<div data-bind="if: MessageFromSelf" class="message-block outgoing">
+			<div class="inline"><img class="av" data-bind="attr: { src: GravatarLink }"></div>
+			<div class="inline">
+				<div class="message outgoing">
+					<span  data-bind="html: Content"></span>
+					<div class="details" data-bind="text: DatePosted"></div>
+				</div>
+			</div>
+			<div class="inline spaced"></div> 
+		</div>
+
+		<div data-bind="ifnot: MessageFromSelf" class="message-block">
+			<div class="inline chat-img">
+				<div class="message incoming">
+					<span  data-bind="html: Content"></span>
+					<div class="details" data-bind="text: datePostedFull"></div>
+				</div>
+			</div>
+			<div class="inline"><img class="av incoming" data-bind="attr: { src: GravatarLink }"/></div>
+		</div>
+	</div>
+</div>
+
+<div id="juser" class="jp-jplayer"></div>
+<div id="jsystem" class="jp-jplayer"></div>
+
+<div id="create-room" title="Create Room">
+	Enter a room name:
+	<input id="create-room-name" />
+	<br/><br/><br/>
+	<input type="checkbox" id="private-room" />
+	<label for="private-room">Make this room private</label>
+	<br/><br/>
+    <div id="room-password-div">
+	    Room password:
+	    <input id="room-password" />
+		<br/><br/>
+    </div>
+</div>

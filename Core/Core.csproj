@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0DB3367D-B74A-4A8C-81CF-29CF355B01B8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Geneca.Core</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.0.7.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\Dynamic.cs" />
+    <Compile Include="Interfaces\IModel.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results\Result.cs" />
+    <Compile Include="Serializers\JsonSerializer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enums\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assemblies\MongoDB\License.txt" />
+    <Content Include="Assemblies\MongoDB\MongoDB.Bson.dll" />
+    <Content Include="Assemblies\MongoDB\MongoDB.Bson.pdb" />
+    <Content Include="Assemblies\MongoDB\MongoDB.Bson.xml" />
+    <Content Include="Assemblies\MongoDB\MongoDB.Driver.dll" />
+    <Content Include="Assemblies\MongoDB\MongoDB.Driver.pdb" />
+    <Content Include="Assemblies\MongoDB\MongoDB.Driver.XML" />
+    <Content Include="Assemblies\MongoDB\Release Notes v1.4.2.txt" />
+    <Content Include="Assemblies\NewtonSoft4.5.7\Newtonsoft.Json.dll" />
+    <Content Include="Assemblies\NewtonSoft\Newtonsoft.Json.dll" />
+    <Content Include="Assemblies\SignalR0.5.2\Hosting\AspNet\net40\SignalR.Hosting.AspNet.dll" />
+    <Content Include="Assemblies\SignalR0.5.2\Hosting\AspNet\net40\SignalR.Hosting.AspNet.XML" />
+    <Content Include="Assemblies\SignalR0.5.2\Hosting\AspNet\net45\SignalR.Hosting.AspNet.dll" />
+    <Content Include="Assemblies\SignalR0.5.2\Hosting\AspNet\net45\SignalR.Hosting.AspNet.XML" />
+    <Content Include="Assemblies\SignalR0.5.2\Hosting\Common\SignalR.Hosting.Common.dll" />
+    <Content Include="Assemblies\SignalR0.5.2\Hosting\Common\SignalR.Hosting.Common.XML" />
+    <Content Include="Assemblies\SignalR0.5.2\JsScripts\jquery.signalR-0.5.2.js" />
+    <Content Include="Assemblies\SignalR0.5.2\JsScripts\jquery.signalR-0.5.2.min.js" />
+    <Content Include="Assemblies\SignalR0.5.2\Server\SignalR.dll" />
+    <Content Include="Assemblies\SignalR0.5.2\Server\SignalR.XML" />
+    <Content Include="Assemblies\SignalR\SignalR.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assemblies\MongoDB\CSharpDriverDocs.chm" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
