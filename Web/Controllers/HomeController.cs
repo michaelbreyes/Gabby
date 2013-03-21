@@ -78,7 +78,7 @@ namespace Geneca.Gabby.Web.Controllers
 
 				UserName = collection["RememberEmail"] == "on" ? SessionFacade.UserName : "";
 
-				return RedirectToAction("Knockout");
+				return RedirectToAction("Index");
 			}
 
 			ViewBag.Error = "invalid username";
